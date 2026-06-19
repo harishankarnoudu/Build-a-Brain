@@ -2,6 +2,11 @@
 
 > **An interactive, story-driven journey from a single number to a thinking machine.**
 
+### 🔗 [**Open the live site → harishankarnoudu.github.io/Build-a-Brain**](https://harishankarnoudu.github.io/Build-a-Brain/)
+
+[![Deploy to GitHub Pages](https://github.com/harishankarnoudu/Build-a-Brain/actions/workflows/deploy.yml/badge.svg)](https://github.com/harishankarnoudu/Build-a-Brain/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Most ML courses hand you formulas. **Build a Brain** tells one continuous story — you *raise a
 mind*, and watch it learn to sense, decide, see, read, remember, and finally think. Every idea is
 something you can **drag, orbit, and train**, and every formula is earned the same way: plain words →
@@ -41,8 +46,9 @@ for the detailed plans.
 
 ## 🚀 Quick start — the web app
 
-The site is React + Vite + TypeScript + Three.js, fully client-side (the neural network trains in
-your browser — no backend). It runs on a single fixed port, **6023**.
+No install needed to explore it — just open the **[live site](https://harishankarnoudu.github.io/Build-a-Brain/)**.
+To run or hack on it locally: it's React + Vite + TypeScript + Three.js, fully client-side (the neural
+network trains in your browser — no backend), on a single fixed port, **6023**.
 
 ```bash
 cd webapp
