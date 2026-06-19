@@ -36,7 +36,7 @@ narrative "from a single number to a thinking machine". Inspired by MLU-Explain,
 ```bash
 cd webapp
 npm install          # one-time
-npm run dev          # http://localhost:5173
+npm run dev          # http://localhost:6023  (fixed port, strictPort; preview uses 6023 too)
 npm run build        # type-check + bundle -> dist/ (host-agnostic: base "./" + hash router)
 npm run preview      # serve the built dist
 ```
@@ -52,4 +52,5 @@ Architecture: `src/lessons.ts` (curriculum + story + `built` flag) · `src/lesso
 - Math/content must be **correct** — verify by hand and against a library where possible.
 - After any webapp change, run `npm run build` (catches TS errors). After notebook changes, execute
   via nbconvert to embed outputs.
-- This is not yet a git repo. Don't commit/push unless asked.
+- This is a git repo, published open-source (MIT) at https://github.com/harishankarnoudu/Build-a-Brain
+  (remote `origin`, branch `main`). Don't commit/push unless asked.
