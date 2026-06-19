@@ -36,7 +36,10 @@ jobs:
           cache-dependency-path: webapp/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        # `npm install` (not `npm ci`): the lockfile is valid, but Vite 8's rolldown
+        # native-binding optional deps make `npm ci` strict across npm versions/OSes.
+        # install resolves the platform tree on the Linux runner without lockfile churn.
+        run: npm install --no-audit --no-fund
 
       - name: Build
         run: npm run build
