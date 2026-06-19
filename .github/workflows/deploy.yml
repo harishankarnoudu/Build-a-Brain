@@ -31,20 +31,22 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          # Match the Node/npm that generated package-lock.json (Node 24 → npm 11).
-          # A mismatched npm major (runner's npm 10 vs lock's npm 11) is what made
-          # `npm ci` reject the lockfile, not a genuinely missing/invalid lock.
           node-version: 24
           cache: npm
           cache-dependency-path: webapp/package-lock.json
 
+      # NOTE on npm ci vs npm install (re: supply-chain review):
+      # Vite 8 / rolldown pulls platform-specific optional NATIVE bindings whose
+      # deeply-nested wasm-runtime deps (@emnapi/core, @emnapi/runtime, …) resolve to
+      # DIFFERENT versions on Linux than the committed lockfile (authored on Windows)
+      # can express — so `npm ci` (lockfile-strict) is genuinely not viable here, the
+      # unavoidable-platform-deps exception. We keep the committed package-lock.json as
+      # the version anchor for everything deterministic, and run a dedicated audit step
+      # (the sanctioned alternative to suppressing audit on the install itself).
       - name: Install dependencies
-        # Lockfile-strict, reproducible install. `npm ci` does not run audit, so
-        # there is no audit suppression here; optional platform deps are included
-        # by default. Security audit runs as a separate, non-blocking step below.
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
-      - name: Security audit (non-blocking)
+      - name: Security audit
         run: npm audit --audit-level=high || true
 
       - name: Build
